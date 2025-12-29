@@ -27,12 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* Navigation */
         nav { 
             background: var(--matcha-dark); 
@@ -64,28 +58,13 @@
             color: white; 
             padding: 0 20px;
         }
-        .hero-text h1 { 
-            font-family: 'Cinzel', serif; 
-            font-size: 3.5rem; 
-            margin-bottom: 1.5rem;
-            animation: fadeInDown 1.2s ease-out;
-        }
-        .hero-text p { 
-            font-size: 1.1rem; 
-            letter-spacing: 1px; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            opacity: 0.9;
-        }
+        .hero-text h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .hero-text p { font-size: 1.1rem; letter-spacing: 1px; max-width: 800px; margin: 0 auto; opacity: 0.9; }
 
         /* Product Section */
         .section-title { text-align: center; padding: 6rem 1rem 2rem; }
         .section-title h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--matcha-dark); }
-        .section-title hr { 
-            width: 0; height: 3px; background: var(--matcha-leaf); 
-            border: none; margin: 15px auto; transition: width 1.5s;
-        }
-        .aos-animate .section-title hr { width: 80px; }
+        .section-title hr { width: 80px; height: 3px; background: var(--matcha-leaf); border: none; margin: 15px auto; }
 
         .product-grid { 
             max-width: 1200px; margin: 0 auto; padding: 2rem; 
@@ -99,10 +78,9 @@
             display: flex; flex-direction: column;
             border: 1px solid rgba(0,0,0,0.03);
         }
-        
         .card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(27, 48, 34, 0.2); }
         
-        .img-container { width: 100%; height: 300px; overflow: hidden; background: #f4f4f4; position: relative; }
+        .img-container { width: 100%; height: 300px; overflow: hidden; background: #f4f4f4; }
         .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s; }
         .card:hover .img-container img { transform: scale(1.1); }
 
@@ -114,9 +92,10 @@
             border-radius: 20px; display: inline-block; margin-bottom: 1rem;
         }
         
-        .specs { font-size: 0.9rem; color: #555; margin-bottom: 2rem; }
+        .specs { font-size: 0.85rem; color: #555; margin-bottom: 2rem; }
         .specs p { margin-bottom: 10px; display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
-        .specs strong { color: var(--matcha-dark); font-weight: 600; }
+        .specs strong { color: var(--matcha-dark); font-weight: 600; min-width: 80px; }
+        .specs span { text-align: right; padding-left: 10px; }
 
         .cta-btn { 
             display: block; text-align: center; padding: 1.2rem; 
@@ -124,7 +103,7 @@
             font-weight: 600; letter-spacing: 2px; transition: var(--transition);
             border-radius: 6px; font-size: 0.8rem;
         }
-        .cta-btn:hover { background: var(--matcha-dark); box-shadow: 0 10px 20px rgba(27, 48, 34, 0.3); }
+        .cta-btn:hover { background: var(--matcha-dark); }
 
         /* Shipping Section */
         .shipping { 
@@ -134,10 +113,8 @@
         .shipping h2 { font-family: 'Cinzel', serif; margin-bottom: 2.5rem; letter-spacing: 2px; }
         .shipping-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .shipping-item h4 { font-size: 1.4rem; color: var(--matcha-bright); margin-bottom: 10px; }
-        .shipping-item p { font-size: 1rem; opacity: 0.8; }
 
-        /* Footer */
-        footer { background: #0a0f0b; color: #555; padding: 5rem 2rem; text-align: center; border-top: 1px solid #111; }
+        footer { background: #0a0f0b; color: #555; padding: 5rem 2rem; text-align: center; }
         .footer-logo { font-family: 'Cinzel', serif; color: #aaa; font-size: 1.2rem; margin-bottom: 1rem; }
 
         @media (max-width: 768px) {
@@ -158,9 +135,9 @@
 
     <section class="hero">
         <div class="hero-text">
-            <p data-aos="fade-down" data-aos-delay="200">SALESO PACIFIC SDN BHD PRESENTS</p>
-            <h1 data-aos="fade-up" data-aos-delay="400">The Finest Japanese Matcha</h1>
-            <p data-aos="fade-up" data-aos-delay="600">Menghadirkan kemurnian teh hijau Jepang langsung dari Shizuoka, Kagoshima, Mie, dan Uji ke pasar Indonesia.</p>
+            <p data-aos="fade-down">SALESO PACIFIC SDN BHD PRESENTS</p>
+            <h1 data-aos="fade-up" data-aos-delay="200">The Finest Japanese Matcha</h1>
+            <p data-aos="fade-up" data-aos-delay="400">Authentic green tea powder directly from Japan's most prestigious tea regions.</p>
         </div>
     </section>
 
@@ -170,23 +147,23 @@
     </div>
 
     <div class="product-grid">
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card" data-aos="fade-up">
             <div class="img-container">
                 <img src="https://static.wixstatic.com/media/aeed3f_cdb75bd8134c4616a1f2420ebb0fb29f~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg" alt="Midoriyama">
             </div>
             <div class="card-content">
-                <span class="origin-badge">SHIZUOKA</span>
+                <span class="origin-badge">UJI, KYOTO</span>
                 <h3>Midoriyama 綠山</h3>
                 <div class="specs">
                     <p><strong>Cultivar:</strong> <span>Yabukita</span></p>
-                    <p><strong>Harvest:</strong> <span>3rd Harvest</span></p>
-                    <p><strong>Note:</strong> <span>Bold & Earthy</span></p>
+                    <p><strong>Taste:</strong> <span>Fresh & Grassy</span></p>
+                    <p><strong>Note:</strong> <span>Light sweetness, sharp finish</span></p>
                 </div>
                 <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
             <div class="img-container">
                 <img src="https://momspantry.ca/cdn/shop/products/matcha2.jpg?v=1598566629" alt="Suiho">
             </div>
@@ -194,31 +171,31 @@
                 <span class="origin-badge">KAGOSHIMA</span>
                 <h3>Suiho 翠峰</h3>
                 <div class="specs">
-                    <p><strong>Cultivar:</strong> <span>Yabukita & Yutakamidori</span></p>
-                    <p><strong>Harvest:</strong> <span>2nd & 3rd Harvest</span></p>
-                    <p><strong>Note:</strong> <span>Balanced & Vibrant</span></p>
+                    <p><strong>Cultivar:</strong> <span>Yabukita</span></p>
+                    <p><strong>Taste:</strong> <span>Grassy & Clean</span></p>
+                    <p><strong>Note:</strong> <span>Lighter umami, gentle bitterness</span></p>
                 </div>
                 <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
             <div class="img-container">
                 <img src="https://www.delisari.com/assets/uploads/media-uploader/matcha-pow-7-3421673367164.jpg" alt="Senzan">
             </div>
             <div class="card-content">
-                <span class="origin-badge">MIE</span>
+                <span class="origin-badge">MIE PREFECTURE</span>
                 <h3>Senzan 千山</h3>
                 <div class="specs">
-                    <p><strong>Cultivar:</strong> <span>Yabukita</span></p>
-                    <p><strong>Harvest:</strong> <span>2nd Harvest</span></p>
-                    <p><strong>Note:</strong> <span>Mellow & Nutty</span></p>
+                    <p><strong>Cultivar:</strong> <span>Yabukita + Okumidori</span></p>
+                    <p><strong>Taste:</strong> <span>Balanced & Creamy</span></p>
+                    <p><strong>Note:</strong> <span>Light nutty, seaweed warmth</span></p>
                 </div>
                 <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card" data-aos="fade-up">
             <div class="img-container">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDyczvqQvovOQzvn5uCJXUTCE4TULjccEaVQ&s" alt="Yuki Arashi">
             </div>
@@ -227,24 +204,24 @@
                 <h3>Yuki Arashi 雪嵐</h3>
                 <div class="specs">
                     <p><strong>Cultivar:</strong> <span>Okumidori</span></p>
-                    <p><strong>Harvest:</strong> <span>1st Harvest</span></p>
-                    <p><strong>Note:</strong> <span>Creamy Ceremonial</span></p>
+                    <p><strong>Taste:</strong> <span>Rich Umami</span></p>
+                    <p><strong>Note:</strong> <span>Creamy transition, silky finish</span></p>
                 </div>
                 <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="200" style="border: 1px solid var(--matcha-bright);">
+        <div class="card" data-aos="fade-up" data-aos-delay="100" style="border: 1px solid var(--matcha-bright);">
             <div class="img-container">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWwYmj2s8SUOd8KeXzCvbvtqsX0jCHK0L25g&s" alt="Gyokuho">
             </div>
             <div class="card-content">
-                <span class="origin-badge">UJI</span>
+                <span class="origin-badge">UJI, KYOTO</span>
                 <h3>Gyokuhō 玉峰</h3>
                 <div class="specs">
                     <p><strong>Cultivar:</strong> <span>Samidori</span></p>
-                    <p><strong>Harvest:</strong> <span>1st Harvest</span></p>
-                    <p><strong>Note:</strong> <span>Supreme Umami</span></p>
+                    <p><strong>Taste:</strong> <span>Buttery Umami</span></p>
+                    <p><strong>Note:</strong> <span>Zero bitterness, vanilla undertone</span></p>
                 </div>
                 <a href="#" class="cta-btn" style="background: #000;">HUBUNGI UNTUK HARGA</a>
             </div>
@@ -263,24 +240,14 @@
                 <p>Gratis pengiriman dengan minimal order 10kg.</p>
             </div>
         </div>
-        <p style="margin-top: 40px; font-size: 0.85rem; font-style: italic; opacity: 0.6;">
-            *Saleso Pacific menyediakan layanan pengiriman kargo khusus untuk menjaga kualitas matcha selama perjalanan.
-        </p>
     </section>
 
     <footer>
         <div class="footer-logo">SALESO PACIFIC SDN BHD</div>
         <p>&copy; 2024 Saleso Pacific. All Rights Reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.4;">Kuala Lumpur | Jakarta | Shizuoka</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-    </script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
