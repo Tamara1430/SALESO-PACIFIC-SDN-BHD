@@ -98,6 +98,7 @@
             background: var(--matcha-mid); color: white; text-decoration: none; 
             font-weight: 600; letter-spacing: 2px; transition: var(--transition);
             border-radius: 6px; font-size: 0.8rem;
+            cursor: pointer;
         }
         .cta-btn:hover { background: var(--matcha-dark); }
 
@@ -246,6 +247,37 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        // Inisialisasi animasi scroll
+        AOS.init({ duration: 1000, once: true });
+
+        // LOGIKA WHATSAPP OTOMATIS
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.cta-btn');
+            const phoneNumber = "6282297051335";
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Cek jika tombol berada di dalam card (mencegah error jika tombol ada di luar card)
+                    const cardContent = this.closest('.card-content');
+                    if (!cardContent) return;
+
+                    e.preventDefault();
+                    
+                    // Mengambil teks dari tag h3 di dalam card tersebut
+                    const productName = cardContent.querySelector('h3').innerText;
+                    
+                    // Menyusun pesan
+                    const message = `Halo boleh tahu harga matcha ${productName}?`;
+                    
+                    // Encode pesan untuk URL
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // Redirect ke WhatsApp
+                    window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
