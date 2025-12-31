@@ -30,7 +30,7 @@
         nav { 
             background: var(--matcha-dark); 
             color: white; 
-            padding: 1.2rem 5%; 
+            padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -39,8 +39,20 @@
             z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
+
+        /* Styling Logo Baru */
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            height: 50px; /* Sesuaikan tinggi logo */
+            width: auto;
+            object-fit: contain;
+        }
         .logo-container { display: flex; flex-direction: column; }
-        .logo-main { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 2px; }
+        .logo-main { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 2px; line-height: 1.2; }
         .logo-sub { font-size: 0.65rem; letter-spacing: 1px; opacity: 0.7; font-weight: 600; }
 
         .hero { 
@@ -111,22 +123,28 @@
         .shipping-item h4 { font-size: 1.4rem; color: var(--matcha-bright); margin-bottom: 10px; }
 
         footer { background: #0a0f0b; color: #555; padding: 5rem 2rem; text-align: center; }
-        .footer-logo { font-family: 'Cinzel', serif; color: #aaa; font-size: 1.4rem; margin-bottom: 0.5rem; letter-spacing: 4px; }
+        .footer-logo-img { height: 40px; margin-bottom: 1rem; filter: grayscale(1) brightness(2); opacity: 0.6; }
 
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2.5rem; }
             .shipping-grid { grid-template-columns: 1fr; }
+            .brand-wrapper { gap: 10px; }
+            .logo-img { height: 40px; }
+            .logo-main { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <span class="logo-main">KYOMORI</span>
-            <span class="logo-sub"> • JAPAN IMPORT</span>
+        <div class="brand-wrapper">
+            <img src="KyomoriLogo.jpg" alt="Kyomori Logo" class="logo-img">
+            <div class="logo-container">
+                <span class="logo-main">KYOMORI</span>
+                <span class="logo-sub"> • JAPAN IMPORT</span>
+            </div>
         </div>
-        <div style="font-size: 0.7rem; opacity: 0.8;">IMPORTER</div>
+        <div style="font-size: 0.7rem; opacity: 0.8; letter-spacing: 1px;">PREMIUM IMPORTER</div>
     </nav>
 
     <section class="hero">
@@ -143,7 +161,7 @@
     </div>
 
     <div class="product-grid">
-        <div class="card" data-aos="fade-up" style="border: 1px solid var(--matcha-bright);">
+        <div class="card" data-aos="fade-up">
             <div class="img-container">
                 <img src="gyokuho.jpeg" alt="Gyokuho">
             </div>
@@ -239,7 +257,8 @@
     </section>
 
     <footer>
-        <div class="footer-logo">KYOMORI</div>
+        <img src="KyomoriLogo.jpg" alt="Kyomori" class="footer-logo-img">
+        <div style="font-family: 'Cinzel', serif; color: #aaa; font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 4px;">KYOMORI</div>
         <p style="letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 1.5rem; color: var(--matcha-bright); font-weight: 400;">
             MALAYSIA &nbsp;|&nbsp; INDONESIA &nbsp;|&nbsp; JAPAN
         </p>
@@ -248,32 +267,21 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi animasi scroll
         AOS.init({ duration: 1000, once: true });
 
-        // LOGIKA WHATSAPP OTOMATIS
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.cta-btn');
             const phoneNumber = "6282297051335";
 
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    // Cek jika tombol berada di dalam card (mencegah error jika tombol ada di luar card)
                     const cardContent = this.closest('.card-content');
                     if (!cardContent) return;
 
                     e.preventDefault();
-                    
-                    // Mengambil teks dari tag h3 di dalam card tersebut
                     const productName = cardContent.querySelector('h3').innerText;
-                    
-                    // Menyusun pesan
                     const message = `Halo boleh tahu harga matcha ${productName}?`;
-                    
-                    // Encode pesan untuk URL
                     const encodedMessage = encodeURIComponent(message);
-                    
-                    // Redirect ke WhatsApp
                     window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
                 });
             });
