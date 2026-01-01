@@ -27,9 +27,10 @@
             overflow-x: hidden;
         }
 
+        /* PERUBAHAN HEADER MENJADI PUTIH */
         nav { 
-            background: var(--matcha-dark); 
-            color: white; 
+            background: var(--white); 
+            color: var(--matcha-dark); 
             padding: 1.2rem 5%; 
             display: flex; 
             justify-content: space-between; 
@@ -37,11 +38,11 @@
             position: sticky; 
             top: 0; 
             z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .logo-container { display: flex; flex-direction: column; }
-        .logo-main { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 2px; }
-        .logo-sub { font-size: 0.65rem; letter-spacing: 1px; opacity: 0.7; font-weight: 600; }
+        .logo-main { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--matcha-dark); }
+        .logo-sub { font-size: 0.65rem; letter-spacing: 1px; opacity: 0.7; font-weight: 600; color: var(--matcha-dark); }
 
         .hero { 
             height: 80vh; 
@@ -248,32 +249,23 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi animasi scroll
         AOS.init({ duration: 1000, once: true });
 
-        // LOGIKA WHATSAPP OTOMATIS
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.cta-btn');
             const phoneNumber = "6282297051335";
 
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    // Cek jika tombol berada di dalam card (mencegah error jika tombol ada di luar card)
                     const cardContent = this.closest('.card-content');
                     if (!cardContent) return;
 
                     e.preventDefault();
                     
-                    // Mengambil teks dari tag h3 di dalam card tersebut
                     const productName = cardContent.querySelector('h3').innerText;
-                    
-                    // Menyusun pesan
                     const message = `Halo boleh tahu harga matcha ${productName}?`;
-                    
-                    // Encode pesan untuk URL
                     const encodedMessage = encodeURIComponent(message);
                     
-                    // Redirect ke WhatsApp
                     window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
                 });
             });
