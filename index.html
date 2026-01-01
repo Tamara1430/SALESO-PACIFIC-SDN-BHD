@@ -39,6 +39,8 @@
             top: 0; 
             z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            flex-wrap: wrap; /* allow wrapping on small screens */
+            gap: 8px;
         }
         /* logo: sekarang gambar + teks berdampingan */
         .logo-container { 
@@ -47,13 +49,14 @@
             align-items: center; 
             gap: 12px;
         }
+        .logo-container > div { min-width: 0; } /* allow text to shrink properly on small screens */
         .logo-img {
             display: block;
-            height: 48px; /* ukuran logo di desktop */
+            height: 64px; /* ukuran logo diperbesar di desktop */
             width: auto;
         }
-        .logo-main { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; color: var(--matcha-dark); }
-        .logo-sub { font-size: 0.66rem; letter-spacing: 1px; opacity: 0.85; font-weight: 600; color: var(--matcha-dark); }
+        .logo-main { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; color: var(--matcha-dark); white-space: nowrap; }
+        .logo-sub { font-size: 0.66rem; letter-spacing: 1px; opacity: 0.85; font-weight: 600; color: var(--matcha-dark); white-space: nowrap; }
 
         .hero { 
             height: 80vh; 
@@ -130,16 +133,16 @@
             .shipping-grid { grid-template-columns: 1fr; }
 
             /* responsive logo */
-            .logo-img { height: 40px; }
+            .logo-img { height: 56px; }
             .logo-main { font-size: 0.95rem; }
-            .logo-sub { font-size: 0.6rem; }
+            .logo-sub { font-size: 0.62rem; }
         }
 
         @media (max-width: 420px) {
-            /* Pada layar sangat kecil, sembunyikan teks sub-logo agar tidak penuh */
-            .logo-sub { display: none; }
+            /* Jangan sembunyikan teks sub-logo pada layar sangat kecil; perkecil ukurannya agar muat */
+            .logo-sub { font-size: 0.55rem; opacity: 0.9; }
             .logo-main { font-size: 0.95rem; }
-            .logo-img { height: 36px; }
+            .logo-img { height: 48px; }
         }
     </style>
 </head>
