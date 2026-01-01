@@ -1,327 +1,316 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYOMORI | Premium Japanese Matcha Importer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-bg: #ffffff;
-            --green-dark: #1B3022;
-            --green-mid: #3A5A40;
-            --green-leaf: #588157;
-            --green-light: #A3B18A;
-            --vintage-filter: sepia(25%) contrast(105%) brightness(1.1) saturate(80%);
-            --transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYOMORI | Premium Japanese Matcha Importer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --green-dark: #1B3022;
+            --green-mid: #3A5A40;
+            --green-leaf: #588157;
+            --green-light: #A3B18A;
+            --vintage-filter: sepia(25%) contrast(105%) brightness(1.1) saturate(80%);
+            --transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary-bg);
-            color: #1a1a1a;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-bg);
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-        /* NAVIGATION */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
-        }
+        /* NAVIGATION */
+        nav {
+            background: var(--primary-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #eee;
+        }
 
-        .brand-wrapper { display: flex; align-items: center; gap: 15px; }
-        /* Placeholder logo using text styling for preview */
-        .logo-placeholder { 
-            font-size: 2rem; color: var(--green-dark); 
-            border: 2px solid var(--green-dark); 
-            padding: 5px 10px; font-family: 'Cinzel', serif;
-        }
-        .logo-container { display: flex; flex-direction: column; line-height: 1.1; }
-        .logo-main { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--green-dark); }
-        .logo-sub { font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; color: var(--green-mid); }
+        .brand-wrapper { display: flex; align-items: center; gap: 20px; }
+        .logo-img { height: 100px; width: auto; transition: var(--transition); }
+        .logo-container { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-main { font-family: 'Cinzel', serif; font-size: 1.6rem; letter-spacing: 3px; color: var(--green-dark); }
+        .logo-sub { font-size: 0.65rem; letter-spacing: 2px; font-weight: 700; color: var(--green-mid); }
 
-        /* HERO SECTION */
-        .hero {
-            height: 85vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            background: #f4f4f4;
-        }
+        /* HERO SECTION - VINTAGE GLASS STYLE */
+        .hero {
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: #f4f4f4;
+        }
 
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* Menggunakan gambar online untuk preview */
-            background: url('https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            filter: var(--vintage-filter);
-            transform: scale(1.02);
-        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://media.istockphoto.com/id/694992188/photo/matcha-green-tea.jpg?s=612x612&w=0&k=20&c=WhkrAq1QibIezJlfsNO2vRsr94GNvSOc6qMAKFw2hIc=');
+            background-size: cover;
+            background-position: center;
+            filter: var(--vintage-filter); /* Efek Vintage Film */
+            transform: scale(1.02);
+        }
 
-        .hero-glass-box {
-            position: relative;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.35); /* Sedikit lebih opaque agar terbaca */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 50px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            max-width: 850px;
-            width: 90%;
-            margin: 0 auto;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
+        /* Kotak Kaca untuk Teks Hitam agar Jelas */
+        .hero-glass-box {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.25); /* Lapisan putih transparan */
+            backdrop-filter: blur(8px); /* Blur latar belakang */
+            -webkit-backdrop-filter: blur(8px);
+            padding: 50px 70px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 850px;
+            margin: 0 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
 
-        .hero-text h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3.8rem); /* Responsive Font */
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: #000000;
-            text-shadow: 0 0 20px rgba(255,255,255,0.9);
-            letter-spacing: 1px;
-        }
+        .hero-text h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            /* Glow putih halus agar huruf hitam terpisah dari background */
+            text-shadow: 0 0 15px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,0.8);
+            letter-spacing: 1px;
+        }
 
-        .hero-text p.presents {
-            color: #111;
-            font-weight: 700;
-            letter-spacing: 6px;
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-        }
+        .hero-text p.presents {
+            color: #222;
+            font-weight: 600;
+            letter-spacing: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
 
-        .hero-text p.description {
-            color: #0a0a0a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-weight: 500;
-            max-width: 600px;
-            margin: 0 auto;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
-        }
+        .hero-text p.description {
+            color: #1a1a1a;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-        /* PRODUCT SECTION */
-        .section-title { text-align: center; padding: 6rem 1rem 3rem; }
-        .section-title h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--green-dark); letter-spacing: 2px; }
-        .section-title hr { width: 50px; height: 2px; background: var(--green-leaf); border: none; margin: 15px auto; }
+        /* PRODUCT SECTION */
+        .section-title { text-align: center; padding: 6rem 1rem 3rem; }
+        .section-title h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--green-dark); letter-spacing: 2px; }
+        .section-title hr { width: 50px; height: 2px; background: var(--green-leaf); border: none; margin: 15px auto; }
 
-        .product-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
 
-        .card {
-            background: white;
-            border: 1px solid #eee;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
-        .img-container { 
-            width: 100%; height: 320px; overflow: hidden; 
-            filter: sepia(10%) contrast(105%); 
-        }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s; }
-        .card:hover .img-container img { transform: scale(1.05); }
+        .img-container { 
+            width: 100%; height: 320px; overflow: hidden; 
+            filter: sepia(10%) contrast(105%); 
+        }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s; }
+        .card:hover .img-container img { transform: scale(1.05); }
 
-        .card-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .origin-badge {
-            font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-            color: var(--green-leaf); border-bottom: 2px solid var(--green-light);
-            display: inline-block; margin-bottom: 1.2rem; padding-bottom: 2px;
-            align-self: flex-start;
-        }
+        .card-content { padding: 2rem; }
+        .origin-badge {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+            color: var(--green-leaf); border-bottom: 2px solid var(--green-light);
+            display: inline-block; margin-bottom: 1.2rem; padding-bottom: 2px;
+        }
 
-        .card-content h3 { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--green-dark); margin-bottom: 1rem; }
-        
-        .specs { margin-bottom: 1.5rem; }
-        .specs p { 
-            display: flex; justify-content: space-between; 
-            padding: 8px 0; border-bottom: 1px solid #f5f5f5;
-            font-size: 0.85rem; color: #555;
-        }
-        .specs strong { color: #000; font-weight: 600; }
+        .card-content h3 { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--green-dark); margin-bottom: 1rem; }
+        
+        .specs p { 
+            display: flex; justify-content: space-between; 
+            padding: 8px 0; border-bottom: 1px solid #f5f5f5;
+            font-size: 0.85rem; color: #555;
+        }
+        .specs strong { color: #000; font-weight: 600; }
 
-        .cta-btn {
-            display: block; text-align: center; padding: 1.1rem;
-            background: #000; color: #fff; text-decoration: none;
-            font-weight: 600; letter-spacing: 2px; font-size: 0.75rem;
-            margin-top: auto; transition: var(--transition);
-        }
-        .cta-btn:hover { background: var(--green-dark); }
+        .cta-btn {
+            display: block; text-align: center; padding: 1.1rem;
+            background: #000; color: #fff; text-decoration: none;
+            font-weight: 600; letter-spacing: 2px; font-size: 0.75rem;
+            margin-top: 1.5rem; transition: var(--transition);
+        }
+        .cta-btn:hover { background: var(--green-dark); }
 
-        /* SHIPPING */
-        .shipping {
-            max-width: 1000px;
-            margin: 2rem auto 8rem;
-            border: 2px solid #000;
-            padding: 4rem 2rem;
-            text-align: center;
-            width: 90%;
-        }
-        .shipping h2 { font-family: 'Cinzel', serif; margin-bottom: 2rem; }
-        .shipping-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        /* SHIPPING */
+        .shipping {
+            max-width: 1000px;
+            margin: 4rem auto 8rem;
+            border: 2px solid #000;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .shipping h2 { font-family: 'Cinzel', serif; margin-bottom: 2rem; }
+        .shipping-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
-        /* FOOTER */
-        footer {
-            background: #f9f9f9;
-            color: #333;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
+        /* FOOTER */
+        footer {
+            background: #f9f9f9;
+            color: #333;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
 
-        @media (max-width: 768px) {
-            .hero-glass-box { padding: 30px 20px; }
-            .hero-text h1 { font-size: 2.2rem; }
-            .logo-main { font-size: 1.2rem; }
-        }
-    </style>
+        @media (max-width: 768px) {
+            .hero-glass-box { padding: 30px 20px; }
+            .shipping-grid { grid-template-columns: 1fr; }
+            .logo-img { height: 70px; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav>
-        <div class="brand-wrapper">
-            <div class="logo-placeholder">K</div> 
-            <div class="logo-container">
-                <span class="logo-main">KYOMORI</span>
-                <span class="logo-sub">PREMIUM JAPANESE IMPORT</span>
-            </div>
-        </div>
-        <div style="font-weight: 600; font-size: 0.7rem; letter-spacing: 2px;">EST. 2024</div>
-    </nav>
+    <nav>
+        <div class="brand-wrapper">
+            <img src="KyomoriLogo.png" alt="Kyomori Logo" class="logo-img">
+            <div class="logo-container">
+                <span class="logo-main">KYOMORI</span>
+                <span class="logo-sub">PREMIUM JAPANESE IMPORT</span>
+            </div>
+        </div>
+        <div style="font-weight: 600; font-size: 0.7rem; letter-spacing: 2px;">EST. 2024</div>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-glass-box" data-aos="fade-up">
-            <div class="hero-text">
-                <p class="presents">KYOMORI PRESENTS</p>
-                <h1>The Finest<br>Japanese Matcha</h1>
-                <p class="description">
-                    Premium quality matcha sourced directly from Japan's most prestigious tea regions: Uji, Shizuoka, Mie, and Kagoshima.
-                </p>
-            </div>
-        </div>
-    </section>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-glass-box" data-aos="fade-up">
+            <div class="hero-text">
+                <p class="presents">KYOMORI PRESENTS</p>
+                <h1>The Finest<br>Japanese Matcha</h1>
+                <p class="description">
+                    Premium quality matcha sourced directly from Japan's most prestigious tea regions: Uji, Shizuoka, Mie, and Kagoshima.
+                </p>
+            </div>
+        </div>
+    </section>
 
-    <div class="section-title" data-aos="fade-up">
-        <h2>Our Collection</h2>
-        <hr>
-    </div>
+    <div class="section-title" data-aos="fade-up">
+        <h2>Our Collection</h2>
+        <hr>
+    </div>
 
-    <div class="product-grid">
-        
-        <div class="card" data-aos="fade-up">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?q=80&w=800&auto=format&fit=crop" alt="Gyokuho">
-            </div>
-            <div class="card-content">
-                <span class="origin-badge">UJI, KYOTO</span>
-                <h3>Gyokuhō 玉峰</h3>
-                <div class="specs">
-                    <p><strong>Cultivar</strong> <span>Samidori</span></p>
-                    <p><strong>Taste</strong> <span>Buttery Umami</span></p>
-                    <p><strong>Notes</strong> <span>Zero bitterness, vanilla</span></p>
-                </div>
-                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
-            </div>
-        </div>
+    <div class="product-grid">
+        <div class="card" data-aos="fade-up">
+            <div class="img-container">
+                <img src="gyokuho.jpeg" alt="Gyokuho">
+            </div>
+            <div class="card-content">
+                <span class="origin-badge">UJI, KYOTO</span>
+                <h3>Gyokuhō 玉峰</h3>
+                <div class="specs">
+                    <p><strong>Cultivar</strong> <span>Samidori</span></p>
+                    <p><strong>Taste</strong> <span>Buttery Umami</span></p>
+                    <p><strong>Notes</strong> <span>Zero bitterness, vanilla</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <div class="img-container">
-                 <img src="https://images.unsplash.com/photo-1536766820879-059fec98ec0a?q=80&w=800&auto=format&fit=crop" alt="Yuki Arashi">
-            </div>
-            <div class="card-content">
-                <span class="origin-badge">SHIZUOKA</span>
-                <h3>Yuki Arashi 雪嵐</h3>
-                <div class="specs">
-                    <p><strong>Cultivar</strong> <span>Okumidori</span></p>
-                    <p><strong>Taste</strong> <span>Rich & Creamy</span></p>
-                    <p><strong>Notes</strong> <span>Silky finish, sweet hint</span></p>
-                </div>
-                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
-            </div>
-        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="img-container">
+                <img src="yuki-arashi.jpeg" alt="Yuki Arashi">
+            </div>
+            <div class="card-content">
+                <span class="origin-badge">SHIZUOKA</span>
+                <h3>Yuki Arashi 雪嵐</h3>
+                <div class="specs">
+                    <p><strong>Cultivar</strong> <span>Okumidori</span></p>
+                    <p><strong>Taste</strong> <span>Rich & Creamy</span></p>
+                    <p><strong>Notes</strong> <span>Silky finish, sweet hint</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <div class="img-container">
-                 <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=800&auto=format&fit=crop" alt="Senzan">
-            </div>
-            <div class="card-content">
-                <span class="origin-badge">MIE PREFECTURE</span>
-                <h3>Senzan 千山</h3>
-                <div class="specs">
-                    <p><strong>Cultivar</strong> <span>Yabukita + Okumidori</span></p>
-                    <p><strong>Taste</strong> <span>Balanced & Nutty</span></p>
-                    <p><strong>Notes</strong> <span>Soft seaweed, creamy</span></p>
-                </div>
-                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
-            </div>
-        </div>
-    </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <div class="img-container">
+                <img src="Senzan.jpeg" alt="Senzan">
+            </div>
+            <div class="card-content">
+                <span class="origin-badge">MIE PREFECTURE</span>
+                <h3>Senzan 千山</h3>
+                <div class="specs">
+                    <p><strong>Cultivar</strong> <span>Yabukita + Okumidori</span></p>
+                    <p><strong>Taste</strong> <span>Balanced & Nutty</span></p>
+                    <p><strong>Notes</strong> <span>Soft seaweed, creamy</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+    </div>
 
-    <section class="shipping" data-aos="fade-up">
-        <h2>Shipping Policy</h2>
-        <div class="shipping-grid">
-            <div class="shipping-item">
-                <strong style="display: block; margin-bottom: 10px; letter-spacing: 1px;">PULAU JAWA</strong>
-                <p style="font-size: 0.9rem; color: #444;">Gratis pengiriman dengan minimal order 5kg.</p>
-            </div>
-            <div class="shipping-item">
-                <strong style="display: block; margin-bottom: 10px; letter-spacing: 1px;">LUAR PULAU JAWA</strong>
-                <p style="font-size: 0.9rem; color: #444;">Gratis pengiriman dengan minimal order 10kg.</p>
-            </div>
-        </div>
-    </section>
+    <section class="shipping" data-aos="fade-up">
+        <h2>Shipping Policy</h2>
+        <div class="shipping-grid">
+            <div class="shipping-item">
+                <strong style="display: block; margin-bottom: 10px; letter-spacing: 1px;">PULAU JAWA</strong>
+                <p style="font-size: 0.9rem; color: #444;">Gratis pengiriman dengan minimal order 5kg.</p>
+            </div>
+            <div class="shipping-item">
+                <strong style="display: block; margin-bottom: 10px; letter-spacing: 1px;">LUAR PULAU JAWA</strong>
+                <p style="font-size: 0.9rem; color: #444;">Gratis pengiriman dengan minimal order 10kg.</p>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 4px; margin-bottom: 1rem; color: var(--green-dark);">KYOMORI</div>
-        <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--green-mid); margin-bottom: 2rem;">
-            MALAYSIA &nbsp;|&nbsp; INDONESIA &nbsp;|&nbsp; JAPAN
-        </p>
-        <p style="font-size: 0.65rem; opacity: 0.5;">&copy; 2024 KYOMORI. All Rights Reserved.</p>
-    </footer>
+    <footer>
+        <img src="KyomoriLogo.png" alt="Kyomori" style="height: 50px; opacity: 0.8; margin-bottom: 1.5rem;">
+        <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 1rem;">KYOMORI</div>
+        <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--green-mid); margin-bottom: 2rem;">
+            MALAYSIA &nbsp;|&nbsp; INDONESIA &nbsp;|&nbsp; JAPAN
+        </p>
+        <p style="font-size: 0.65rem; opacity: 0.5;">&copy; 2024 KYOMORI. All Rights Reserved.</p>
+    </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
-        // WA Redirect Logic - Dinamis mengambil nama produk
-        document.querySelectorAll('.cta-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Mengambil nama produk dari tag h3 terdekat
-                const productName = this.closest('.card-content').querySelector('h3').innerText;
-                const message = encodeURIComponent(`Halo KYOMORI, saya tertarik untuk mengetahui harga grosir matcha ${productName}.`);
-                // Ganti nomor ini dengan nomor WA admin yang benar
-                window.location.href = `https://wa.me/6282297051335?text=${message}`;
-            });
-        });
-    </script>
+        // WA Redirect
+        document.querySelectorAll('.cta-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productName = this.closest('.card-content').querySelector('h3').innerText;
+                const message = encodeURIComponent(`Halo, saya ingin bertanya harga matcha ${productName}.`);
+                window.location.href = `https://wa.me/6282297051335?text=${message}`;
+            });
+        });
+    </script>
 </body>
 </html>
+
+ini adalah code kita, yang perlu kamu lakukan adalah sesuaikan dengan data yang akan kami berikan di promp sebelumnya
