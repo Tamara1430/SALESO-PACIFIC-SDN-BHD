@@ -40,9 +40,20 @@
             z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-        .logo-container { display: flex; flex-direction: column; }
-        .logo-main { font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--matcha-dark); }
-        .logo-sub { font-size: 0.65rem; letter-spacing: 1px; opacity: 0.7; font-weight: 600; color: var(--matcha-dark); }
+        /* logo: sekarang gambar + teks berdampingan */
+        .logo-container { 
+            display: flex; 
+            flex-direction: row; 
+            align-items: center; 
+            gap: 12px;
+        }
+        .logo-img {
+            display: block;
+            height: 48px; /* ukuran logo di desktop */
+            width: auto;
+        }
+        .logo-main { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; color: var(--matcha-dark); }
+        .logo-sub { font-size: 0.66rem; letter-spacing: 1px; opacity: 0.85; font-weight: 600; color: var(--matcha-dark); }
 
         .hero { 
             height: 80vh; 
@@ -117,6 +128,18 @@
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2.5rem; }
             .shipping-grid { grid-template-columns: 1fr; }
+
+            /* responsive logo */
+            .logo-img { height: 40px; }
+            .logo-main { font-size: 0.95rem; }
+            .logo-sub { font-size: 0.6rem; }
+        }
+
+        @media (max-width: 420px) {
+            /* Pada layar sangat kecil, sembunyikan teks sub-logo agar tidak penuh */
+            .logo-sub { display: none; }
+            .logo-main { font-size: 0.95rem; }
+            .logo-img { height: 36px; }
         }
     </style>
 </head>
@@ -124,8 +147,14 @@
 
     <nav>
         <div class="logo-container">
-            <span class="logo-main">KYOMORI</span>
-            <span class="logo-sub"> • JAPAN IMPORT</span>
+            <!-- Gambar logo: letakkan KyomoriLogo.png di root repo atau sesuaikan path -->
+            <a href="/" aria-label="KYOMORI Home" style="display:inline-block;">
+                <img src="KyomoriLogo.png" alt="KYOMORI Logo" class="logo-img">
+            </a>
+            <div style="display:flex; flex-direction:column; line-height:1;">
+                <span class="logo-main">KYOMORI</span>
+                <span class="logo-sub"> • JAPAN IMPORT</span>
+            </div>
         </div>
         <div style="font-size: 0.7rem; opacity: 0.8;">IMPORTER</div>
     </nav>
