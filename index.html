@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-       /* ============================= */
+        /* ============================= */
 /* VARIABLES */
 /* ============================= */
 :root { 
@@ -345,6 +345,212 @@ footer{
 @media(max-width:480px){
     .img-container{max-height:none;}
 }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <a href="/" aria-label="KYOMORI Home" style="display:inline-block;">
+                <img src="Lgfix.jpg" alt="KYOMORI Logo" class="logo-img">
+            </a>
+            <div style="display:flex; flex-direction:column; line-height:1;">
+                <span class="logo-main">KYOMORI</span>
+                <span class="logo-sub"> • JAPAN IMPORT</span>
+            </div>
+        </div>
+        <div style="font-size: 0.7rem; opacity: 0.8;">IMPORTER</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <p data-aos="fade-down">KYOMORI PRESENTS</p>
+            <h1 data-aos="fade-up" data-aos-delay="200">The Finest Japanese Matcha</h1>
+            <p data-aos="fade-up" data-aos-delay="400">Bringing the purity of Japanese Matcha directly from Uji, Shizuoka, Mie and Kagoshima</p>
+        </div>
+    </section>
+
+    <div class="section-title" data-aos="fade-up">
+        <h2>Our Collection</h2>
+        <hr>
+    </div>
+    
+    <div class="product-grid">
+        <script>
+            // Fungsi Carousel Diupdate agar otomatis mendeteksi iframe youtube
+            function carousel(mediaArray) {
+                return `
+                    <div class='img-container'>
+                        <div class='carousel'>
+                            <div class='slides'>
+                                ${mediaArray.map(src => {
+                                    if(src.includes('youtube.com/embed')) {
+                                        return `<iframe src='${src}?rel=0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>`;
+                                    } else {
+                                        return `<img src='${src}' alt='Matcha Product'>`;
+                                    }
+                                }).join('')}
+                            </div>
+                            <button class='nav-btn prev'>‹</button>
+                            <button class='nav-btn next'>›</button>
+                            <div class='dots'>
+                                ${mediaArray.map(() => `<div class='dot'></div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        </script>
+
+        <div class="card" data-aos="fade-up" style="border: 1px solid var(--matcha-bright);">
+            <script>document.write(carousel([
+                'gyokuho.jpeg', 
+                'https://www.youtube.com/embed/dQw4w9WgXcQ', /* Ganti ID dQw4w9WgXcQ dengan ID Short kamu */
+                'gyokuho.jpeg'
+            ]))</script>
+            <div class="card-content">
+                <span class="origin-badge">UJI, KYOTO</span>
+                <h3>Gyokuhō 玉峰</h3>
+                <div class="specs">
+                    <p><strong>Cultivar:</strong> <span>Samidori</span></p>
+                    <p><strong>Taste:</strong> <span>Thick, buttery umami; natural sweetness; very fine texture</span></p>
+                    <p><strong>Note:</strong> <span>Zero bitterness, vanilla undertone</span></p>
+                </div>
+                <a href="#" class="cta-btn" style="background: #000;">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <script>document.write(carousel(['yuki-arashi.jpeg','yuki-arashi.jpeg','yuki-arashi.jpeg']))</script>
+            <div class="card-content">
+                <span class="origin-badge">SHIZUOKA</span>
+                <h3>Yuki Arashi 雪嵐</h3>
+                <div class="specs">
+                    <p><strong>Cultivar:</strong> <span>Okumidori</span></p>
+                    <p><strong>Taste:</strong> <span>Rich, creamy umami; gentle sweetness; silky and smooth from start to finish</span></p>
+                    <p><strong>Note:</strong> <span>Hint of bitterness; creamy green transition</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <script>document.write(carousel(['Senzan.jpeg','Senzan.jpeg','Senzan.jpeg']))</script>
+            <div class="card-content">
+                <span class="origin-badge">MIE PREFECTURE</span>
+                <h3>Senzan 千山</h3>
+                <div class="specs">
+                    <p><strong>Cultivar:</strong> <span>Yabukita</span></p>
+                    <p><strong>Taste:</strong> <span>Smooth finish with a slight lingering green-tea crispness; balanced umami with a gentle sweetness</span></p>
+                    <p><strong>Note:</strong> <span>Soft seaweed / umami warmth; light nutty and creamy tone</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up">
+            <script>document.write(carousel(['suiho.jpeg','suiho.jpeg','suiho.jpeg']))</script>
+            <div class="card-content">
+                <span class="origin-badge">KAGOSHIMA</span>
+                <h3>Suiho 翠峰</h3>
+                <div class="specs">
+                    <p><strong>Cultivar:</strong> <span>Yabukita, Yatukamidori</span></p>
+                    <p><strong>Taste:</strong> <span>Grassy; cleaner and lighter umami</span></p>
+                    <p><strong>Note:</strong> <span>Gentle bitterness</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <script>document.write(carousel(['midoriyama.jpeg','midoriyama.jpeg','midoriyama.jpeg']))</script>
+            <div class="card-content">
+                <span class="origin-badge">Shizuoka</span>
+                <h3>Midoriyama 綠山</h3>
+                <div class="specs">
+                    <p><strong>Cultivar:</strong> <span>Yabukita</span></p>
+                    <p><strong>Taste:</strong> <span>Fresh, grassy; light sweetness; noticeable astringency/bitterness</span></p>
+                    <p><strong>Note:</strong> <span>Clean and sharp finish</span></p>
+                </div>
+                <a href="#" class="cta-btn">HUBUNGI UNTUK HARGA</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="shipping" data-aos="zoom-in">
+        <h2>Shipping Information</h2>
+        <div class="shipping-grid">
+            <div class="shipping-item">
+                <h4>PULAU JAWA</h4>
+                <p>Gratis pengiriman dengan minimal order 5kg.</p>
+            </div>
+            <div class="shipping-item">
+                <h4>LUAR PULAU JAWA</h4>
+                <p>Gratis pengiriman dengan minimal order 10kg.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">KYOMORI</div>
+        <p style="letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 1.5rem; color: var(--matcha-bright); font-weight: 400;">
+            MALAYSIA &nbsp;|&nbsp; INDONESIA &nbsp;|&nbsp; JAPAN
+        </p>
+        <p style="font-size: 0.75rem; opacity: 0.6;">&copy; 2024 KYOMORI. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // WhatsApp CTA Logic
+        const phoneNumber = "6282297051335";
+        document.querySelectorAll('.cta-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = btn.closest('.card-content');
+                if (!card) return;
+                
+                e.preventDefault();
+                const name = card.querySelector('h3').innerText;
+                location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(`Halo boleh tahu harga matcha ${name}?`)}`;
+            });
+        });
+
+        // Carousel Slider Logic
+        document.querySelectorAll('.carousel').forEach(car => {
+            const slides = car.querySelector('.slides');
+            const imgs = slides.children; // Now includes iframes too
+            let i = 0;
+            const dots = [...car.querySelectorAll('.dot')];
+            
+            function update() {
+                slides.style.transform = `translateX(-${i * 100}%)`;
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+            }
+            
+            car.querySelector('.next').onclick = () => {
+                i = (i + 1) % imgs.length;
+                update();
+            };
+            
+            car.querySelector('.prev').onclick = () => {
+                i = (i - 1 + imgs.length) % imgs.length;
+                update();
+            };
+            
+            dots.forEach((d, idx) => {
+                d.onclick = () => {
+                    i = idx;
+                    update();
+                };
+            });
+            
+            update();
+        });
     </script>
 </body>
 </html>
