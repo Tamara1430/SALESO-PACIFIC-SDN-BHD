@@ -162,9 +162,9 @@
         /* Carousel inside Cards */
         .img-container {
             width: 100%;
-            height: 300px;
+            height: 300px; /* Ukuran statis kontainer */
             overflow: hidden;
-            background: #f4f4f4;
+            background: #000; /* Ubah ke hitam agar bar yt short terlihat elegan */
             position: relative;
         }
         
@@ -181,11 +181,13 @@
             transition: transform 0.6s ease;
         }
         
-        .slides img {
+        /* Tambahkan dukungan iframe agar seukuran penuh dengan slide */
+        .slides img, .slides iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
             flex-shrink: 0;
+            border: none;
         }
         
         .nav-btn {
@@ -203,6 +205,7 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
+            z-index: 10; /* Menjaga tombol tetap di atas iframe */
         }
         
         .prev { left: 10px; }
@@ -215,6 +218,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 6px;
+            z-index: 10; /* Menjaga dots tetap di atas iframe */
         }
         
         .dot {
@@ -384,17 +388,24 @@
     
     <div class="product-grid">
         <script>
-            function carousel(images) {
+            // Fungsi Carousel Diupdate agar otomatis mendeteksi iframe youtube
+            function carousel(mediaArray) {
                 return `
                     <div class='img-container'>
                         <div class='carousel'>
                             <div class='slides'>
-                                ${images.map(src => `<img src='${src}'>`).join('')}
+                                ${mediaArray.map(src => {
+                                    if(src.includes('youtube.com/embed')) {
+                                        return `<iframe src='${src}?rel=0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>`;
+                                    } else {
+                                        return `<img src='${src}' alt='Matcha Product'>`;
+                                    }
+                                }).join('')}
                             </div>
                             <button class='nav-btn prev'>‹</button>
                             <button class='nav-btn next'>›</button>
                             <div class='dots'>
-                                ${images.map(() => `<div class='dot'></div>`).join('')}
+                                ${mediaArray.map(() => `<div class='dot'></div>`).join('')}
                             </div>
                         </div>
                     </div>
@@ -403,7 +414,11 @@
         </script>
 
         <div class="card" data-aos="fade-up" style="border: 1px solid var(--matcha-bright);">
-            <script>document.write(carousel(['gyokuho.jpeg','gyokuho.jpeg','gyokuho.jpeg']))</script>
+            <script>document.write(carousel([
+                'gyokuho.jpeg', 
+                'https://www.youtube.com/embed/dQw4w9WgXcQ', /* Ganti ID dQw4w9WgXcQ dengan ID Short kamu */
+                'gyokuho.jpeg'
+            ]))</script>
             <div class="card-content">
                 <span class="origin-badge">UJI, KYOTO</span>
                 <h3>Gyokuhō 玉峰</h3>
@@ -519,7 +534,7 @@
         // Carousel Slider Logic
         document.querySelectorAll('.carousel').forEach(car => {
             const slides = car.querySelector('.slides');
-            const imgs = slides.children;
+            const imgs = slides.children; // Now includes iframes too
             let i = 0;
             const dots = [...car.querySelectorAll('.dot')];
             
